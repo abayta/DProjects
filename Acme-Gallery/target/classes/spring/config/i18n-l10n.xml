@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd 
+	">
+
+	<util:list id="messages">
+		<value>/views/master-page/messages</value>
+		<value>/views/misc/messages</value>
+		<value>/views/security/messages</value>		
+		<value>/views/welcome/messages</value>
+		
+		<value>/views/privacy/messages</value>
+		<value>/views/customer/messages</value>
+		<value>/views/gallery/messages</value>
+		<value>/views/painting/messages</value>
+		<value>/views/auction/messages</value>
+		<value>/views/ownership/messages</value>
+		<value>/views/dashboard/messages</value>
+		<value>/views/bid/messages</value>
+		<value>/views/comment/messages</value>
+	</util:list>
+
+</beans>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	
+	<!-- User accounts -->
+	
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin1" />
+		<property name="password" value="e00cf25ad42683b3df678c61f42c6bda" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="participant1" />
+		<property name="password" value="6b3ebb7546572cb7c90df341d113e6df" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PARTICIPANT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="participant2" />
+		<property name="password" value="5b0399be2146c81ba5ac69c3e91b4021" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PARTICIPANT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<!-- Administrators -->
+	
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="Salvador" />
+		<property name="surname" value="Herrera López" />
+		<property name="userAccount" ref="userAccount1" />
+		<property name="emailAddress" value="salherlop@acmesporttracking.com" />
+	</bean>
+	
+	<bean id="administrator2" class="domain.Administrator">
+		<property name="name" value="Francisco Javier" />
+		<property name="surname" value="Reina Ponce" />
+		<property name="userAccount" ref="userAccount2" />
+		<property name="emailAddress" value="frareipon@acmesporttracking.com" />
+	</bean>
+	
+	
+	<!-- CreditCards -->
+	
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="Antonio Fernández García" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4532 1114 5467 6994" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="2015" />
+		<property name="cvv" value="678" />
+	</bean>
+
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holderName" value="Daniel López Segura" />
+		<property name="brandName" value="MasterCard" />
+		<property name="number" value="5159 6819 1639 9202" />
+		<property name="expirationMonth" value="01" />
+		<property name="expirationYear" value="2016" />
+		<property name="cvv" value="368" />
+	</bean>
+
+
+	<!-- Participants -->
+
+	<bean id="participant1" class="domain.Participant">
+		<property name="name" value="Antonio" />
+		<property name="surname" value="Fernández García" />
+		<property name="emailAddress" value="afernandez@acmesporttracking.com" />
+		<property name="userAccount" ref="userAccount3" />
+		<property name="creditCard" ref="creditCard1" />
+		<property name="registrations">
+			<list>
+				<ref bean="registration1"/>
+				<ref bean="registration3"/>
+			</list>
+		</property>
+		<property name="assessmentsRoutes">
+			<list>
+			</list>
+		</property>	
+	</bean>
+
+	<bean id="participant2" class="domain.Participant">
+		<property name="name" value="Daniel" />
+		<property name="surname" value="López Segura" />
+		<property name="emailAddress" value="dlopez@acmesporttracking.com" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="creditCard" ref="creditCard2" />
+		<property name="registrations">
+			<list>
+				<ref bean="registration2"/>
+				<ref bean="registration4"/>
+				<ref bean="registration5"/>
+			</list>
+		</property>
+		<property name="assessmentsRoutes">
+			<list>
+			</list>
+		</property>	
+	</bean>
+	
+	
+	<!-- Events -->
+	
+	<bean id="event1" class="domain.Event">
+		<property name="referenceNumber" value="referenceNumberEvent1" />
+		<property name="title" value="Event1" />
+		<property name="fee" value="40.35" />
+		<property name="creationMoment" value="2013/01/08 09:00" />
+		<property name="startMoment" value="2013/08/08 10:00" />
+		<property name="finishMoment" value="2013/08/10 22:00" />
+		<property name="description" value="Description Event 1." />
+		<property name="administrator" ref="administrator1" />
+		<property name="routes">
+			<list>
+				<ref bean="route1"/>
+			</list>
+		</property>
+		<property name="challenges">
+			<list>
+				<ref bean="challenge1"/>
+				<ref bean="challenge2"/>
+			</list>
+		</property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="event2" class="domain.Event">
+		<property name="referenceNumber" value="referenceNumberEvent2" />
+		<property name="title" value="Event2" />
+		<property name="fee" value="21.15" />
+		<property name="creationMoment" value="2014/01/15 10:00" />
+		<property name="startMoment" value="2014/08/15 10:00" />
+		<property name="finishMoment" value="2014/08/17 22:00" />
+		<property name="description" value="Description Event 2." />
+		<property name="administrator" ref="administrator1" />
+		<property name="routes">
+			<list>
+				<ref bean="route2"/>
+			</list>
+		</property>
+		<property name="challenges">
+			<list>
+			</list>
+		</property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="event3" class="domain.Event">
+		<property name="referenceNumber" value="referenceNumberEvent3" />
+		<property name="title" value="Event3" />
+		<property name="fee" value="50.55" />
+		<property name="creationMoment" value="2014/01/15 17:00" />
+		<property name="startMoment" value="2014/10/03 13:00" />
+		<property name="finishMoment" value="2014/10/05 19:30" />
+		<property name="description" value="Description Event 3." />
+		<property name="administrator" ref="administrator1" />
+		<property name="routes">
+			<list>
+				<ref bean="route3"/>
+				<ref bean="route4"/>
+			</list>
+		</property>
+		<property name="challenges">
+			<list>
+			</list>
+		</property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration3"/>
+				<ref bean="registration4"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="event4" class="domain.Event">
+		<property name="referenceNumber" value="referenceNumberEvent4" />
+		<property name="title" value="Event4" />
+		<property name="fee" value="70.85" />
+		<property name="creationMoment" value="2014/01/15 20:00" />
+		<property name="startMoment" value="2014/10/03 15:00" />
+		<property name="finishMoment" value="2014/10/05 22:30" />
+		<property name="description" value="Description Event 4." />
+		<property name="administrator" ref="administrator2" />
+		<property name="routes">
+			<list>
+			</list>
+		</property>
+		<property name="challenges">
+			<list>
+			</list>
+		</property>
+		<property name="registrations">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="event5" class="domain.Event">
+		<property name="referenceNumber" value="referenceNumberEvent5" />
+		<property name="title" value="Event5" />
+		<property name="fee" value="88.84" />
+		<property name="creationMoment" value="2014/02/15 20:00" />
+		<property name="startMoment" value="2014/02/19 15:00" />
+		<property name="finishMoment" value="2014/04/15 22:30" />
+		<property name="description" value="Description Event 5." />
+		<property name="administrator" ref="administrator2" />
+		<property name="routes">
+			<list>
+				<ref bean="route5"/>
+			</list>
+		</property>
+		<property name="challenges">
+			<list>
+				<ref bean="challenge3"/>
+			</list>
+		</property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration5"/>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<!-- Routes -->
+	
+	<bean id="route1" class="domain.Route">
+		<property name="name" value="Route 1" />
+		<property name="length" value="0.8" />
+		<property name="difficulty" value="75" />
+		<property name="orderNumber" value="1" />
+		<property name="event" ref="event1" />
+		<property name="assessmentsRoutes">
+			<list>
+			</list>
+		</property>	
+	</bean>
+
+	<bean id="route2" class="domain.Route">
+		<property name="name" value="Route 2" />
+		<property name="length" value="1.5" />
+		<property name="difficulty" value="50" />
+		<property name="orderNumber" value="1" />
+		<property name="event" ref="event2" />
+		<property name="assessmentsRoutes">
+			<list>
+			</list>
+		</property>	
+	</bean>
+	
+	<bean id="route3" class="domain.Route">
+		<property name="name" value="Route 3" />
+		<property name="length" value="2.2" />
+		<property name="difficulty" value="25" />
+		<property name="orderNumber" value="1" />
+		<property name="event" ref="event3" />
+		<property name="assessmentsRoutes">
+			<list>
+			</list>
+		</property>	
+	</bean>
+	
+	<bean id="route4" class="domain.Route">
+		<property name="name" value="Route 4" />
+		<property name="length" value="1.9" />
+		<property name="difficulty" value="62" />
+		<property name="orderNumber" value="2" />
+		<property name="event" ref="event3" />
+		<property name="assessmentsRoutes">
+			<list>
+			</list>
+		</property>	
+	</bean>
+	
+	<bean id="route5" class="domain.Route">
+		<property name="name" value="Route 5" />
+		<property name="length" value="2.2" />
+		<property name="difficulty" value="46" />
+		<property name="orderNumber" value="1" />
+		<property name="event" ref="event5" />
+		<property name="assessmentsRoutes">
+			<list>
+			</list>
+		</property>	
+	</bean>
+	
+	
+	<!-- Challenges -->
+	
+	<bean id="challenge1" class="domain.Challenge">
+		<property name="title" value="Challenge 1" />
+		<property name="description" value="Description challenge 1." />
+		<property name="result" value="Result challenge 1." />
+		<property name="event" ref="event1" />
+	</bean>
+
+	<bean id="challenge2" class="domain.Challenge">
+		<property name="title" value="Challenge 2" />
+		<property name="description" value="Description challenge 2." />
+		<property name="result" value="Result challenge 2." />
+		<property name="event" ref="event1" />
+	</bean>
+	
+	<bean id="challenge3" class="domain.Challenge">
+		<property name="title" value="Challenge 3" />
+		<property name="description" value="Description challenge 3." />
+		<property name="result" value="Result challenge 3." />
+		<property name="event" ref="event5" />
+	</bean>
+
+
+	<!-- Assessments -->
+
+	<bean id="assessment1" class="domain.Assessment">
+		<property name="rating" value="7" />
+		<property name="comments" value="Comment 1" />
+	</bean>
+	
+	<bean id="assessment3" class="domain.Assessment">
+		<property name="rating" value="12" />
+		<property name="comments" value="Comment 3" />
+	</bean>
+	
+	<bean id="assessment4" class="domain.Assessment">
+		<property name="rating" value="50" />
+		<property name="comments" value="Comment 3" />
+	</bean>
+	
+
+	<!-- Registrations -->
+
+	<bean id="registration1" class="domain.Registration">
+		<property name="date" value="2013/01/08 12:00" />
+		<property name="participant" ref="participant1" />
+		<property name="event" ref="event1" />
+	</bean>
+	
+	<bean id="registration2" class="domain.Registration">
+		<property name="date" value="2014/01/15 13:00" />
+		<property name="participant" ref="participant2" />
+		<property name="event" ref="event2" />
+	</bean>
+	
+	<bean id="registration3" class="domain.Registration">
+		<property name="date" value="2014/02/10 10:10" />
+		<property name="assessment" ref="assessment1" />
+		<property name="participant" ref="participant1" />
+		<property name="event" ref="event3" />
+	</bean>
+	
+	<bean id="registration4" class="domain.Registration">
+		<property name="date" value="2014/02/15 15:45" />
+		<property name="participant" ref="participant2" />
+		<property name="event" ref="event3" />
+	</bean>
+	
+	<bean id="registration5" class="domain.Registration">
+		<property name="date" value="2014/02/15 22:00" />
+		<property name="participant" ref="participant2" />
+		<property name="event" ref="event5" />
+	</bean>
+	
+	
+	<!-- AssessmentRoute -->
+	
+	<bean id="assessmentRoute1" class="domain.AssessmentRoute">
+		<property name="assessment" ref="assessment3"></property>
+		<property name="participant" ref="participant1"></property>
+		<property name="route" ref="route3"></property>
+	</bean>
+	
+	<bean id="assessmentRoute2" class="domain.AssessmentRoute">
+		<property name="assessment" ref="assessment4"></property>
+		<property name="participant" ref="participant2"></property>
+		<property name="route" ref="route3"></property>
+	</bean>
+
+</beans>

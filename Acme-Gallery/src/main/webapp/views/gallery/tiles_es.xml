@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+	
+	<definition name="gallery/list-of-customer" extends="master.page">	
+		<put-attribute name="title" value="Lista de galerias del cliente"/>
+		<put-attribute name="body" value="/views/gallery/list.jsp" />
+	</definition>
+	
+	<definition name="gallery/edit" extends="master.page">	
+		<put-attribute name="title" value="Edición de una galería" />
+		<put-attribute name="body" value="/views/gallery/edit.jsp" />
+	</definition>
+
+</tiles-definitions>

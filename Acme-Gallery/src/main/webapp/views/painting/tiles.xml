@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="painting/list-of-customer" extends="master.page">	
+		<put-attribute name="title" value="List of customer's paintings"/>
+		<put-attribute name="body" value="/views/painting/list.jsp" />
+	</definition>
+	
+	<definition name="painting/list-of-customer" extends="master.page">	
+		<put-attribute name="title" value="List of customer's paintings"/>
+		<put-attribute name="body" value="/views/painting/list.jsp" />
+	</definition>
+
+	<definition name="painting/list-of-customer-without-galleries" extends="master.page">	
+		<put-attribute name="title" value="List of customer's paintings without galleries"/>
+		<put-attribute name="body" value="/views/painting/list.jsp" />
+	</definition>
+	
+	<definition name="painting/list-of-paintings" extends="master.page">	
+		<put-attribute name="title" value="List of gallery's paintings"/>
+		<put-attribute name="body" value="/views/painting/list.jsp" />
+	</definition>
+
+	<definition name="painting/list-all-paintings" extends="master.page">	
+		<put-attribute name="title" value="List of paintings"/>
+		<put-attribute name="body" value="/views/painting/list.jsp" />
+	</definition>
+	
+	<definition name="painting/details" extends="master.page">	
+		<put-attribute name="title" value="Details of painting"/>
+		<put-attribute name="body" value="/views/painting/display.jsp" />
+	</definition>
+
+	<definition name="painting/edit" extends="master.page">	
+		<put-attribute name="title" value="Edition of painting"/>
+		<put-attribute name="body" value="/views/painting/edit.jsp" />
+	</definition>
+
+</tiles-definitions>

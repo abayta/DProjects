@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="statusUpdate/list" extends="master.page">	
+		<put-attribute name="title" value="List of status updates" />
+		<put-attribute name="body" value="/views/statusUpdate/list.jsp" />
+	</definition>
+	
+	<definition name="statusUpdate/list-my-followed-projects" extends="master.page">	
+		<put-attribute name="title" value="List of status updates of followed projects" />
+		<put-attribute name="body" value="/views/statusUpdate/list.jsp" />
+	</definition>
+
+	<definition name="statusUpdate/display" extends="master.page">	
+		<put-attribute name="title" value="Details of status update" />
+		<put-attribute name="body" value="/views/statusUpdate/display.jsp" />
+	</definition>
+	
+	<definition name="statusUpdate/edit" extends="master.page">	
+		<put-attribute name="title" value="Create status update" />
+		<put-attribute name="body" value="/views/statusUpdate/edit.jsp" />
+	</definition>
+	
+</tiles-definitions>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="doctor/list-available" extends="master.page">	
+		<put-attribute name="title" value="Registered doctors"/>
+		<put-attribute name="body" value="/views/doctor/list.jsp" />
+	</definition>
+	
+	<definition name="doctor/list-available-by-specialty" extends="master.page">	
+		<put-attribute name="title" value="Registered doctors by specialty"/>
+		<put-attribute name="body" value="/views/doctor/list.jsp" />
+	</definition>
+	
+	<definition name="doctor/list-available-by-clinic-specialty" extends="master.page">	
+		<put-attribute name="title" value="Registered doctors by specialty"/>
+		<put-attribute name="body" value="/views/doctor/list.jsp" />
+	</definition>
+	
+	<definition name="doctor/details" extends="master.page">	
+		<put-attribute name="title" value="Doctor's profile"/>
+		<put-attribute name="body" value="/views/doctor/display.jsp" />
+	</definition>
+
+</tiles-definitions>

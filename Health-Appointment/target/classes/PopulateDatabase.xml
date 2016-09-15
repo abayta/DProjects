@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="doctor1" />
+		<property name="password" value="45f678b147fdf275c35b60bac2360984" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="DOCTOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="doctor2" />
+		<property name="password" value="3b02a6fdd669efe9083cc84d15e5699b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="DOCTOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="patient1" />
+		<property name="password" value="8103cfda42d725cd38e8bdf9610ef9a6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PATIENT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="patient2" />
+		<property name="password" value="3d47080f1445cd844c3390b15c835ffa" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PATIENT" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="labtechnician1" />
+		<property name="password" value="9673947043805afd61719ed2b21e4f9c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="LAB_TECHNICIAN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="labtechnician2" />
+		<property name="password" value="fd75818427bfab1258e9a67ae6bd4d91" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="LAB_TECHNICIAN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Administrators -->
+
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="Salvador"></property>
+		<property name="surname" value="Herrera López"></property>
+		<property name="userAccount" ref="userAccount1"></property>
+		<property name="emailAddress" value="salherlop@healthappointment.com"></property>
+	</bean>
+	
+	<!-- Health Insurance Cards -->
+	
+	<bean id="healthInsuranceCard1" class="domain.HealthInsuranceCard">
+		<property name="birthday" value="1990/06/01"/>
+		<property name="idNumber" value="125DF545FD45"/>
+		<property name="number" value="1234565"/>
+		<property name="expirationMonth" value="12"/>
+		<property name="expirationYear" value="2016"/>	
+	</bean>
+	
+	<bean id="healthInsuranceCard2" class="domain.HealthInsuranceCard">
+		<property name="birthday" value="1995/06/01"/>
+		<property name="idNumber" value="125DF45DF"/>
+		<property name="number" value="12345895"/>
+		<property name="expirationMonth" value="12"/>
+		<property name="expirationYear" value="2016"/>
+	</bean>
+	
+	<!-- Patients -->
+	
+	<bean id="patient1" class="domain.Patient">
+		<property name="name" value="Antonio"></property>
+		<property name="surname" value="Gerena Roman"></property>
+		<property name="emailAddress" value="agerena@healthappointment.com"></property>
+		<property name="healthInsuranceCard" ref="healthInsuranceCard1"></property>
+		<property name="userAccount" ref="userAccount4"></property>
+		<property name="clinicalHistory" ref="clinicalHistory1"/>
+		<property name="appointments">
+			<list>
+				<ref bean="appointment1"/>
+				<ref bean="appointment4"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="patient2" class="domain.Patient">
+		<property name="name" value="Felipe"></property>
+		<property name="surname" value="Gerena Roman"></property>
+		<property name="emailAddress" value="fgerena@healthappointment.com"></property>
+		<property name="healthInsuranceCard" ref="healthInsuranceCard2"></property>
+		<property name="userAccount" ref="userAccount5"></property>
+		<property name="clinicalHistory" ref="clinicalHistory2"/>
+		<property name="appointments">
+			<list>
+				<ref bean="appointment2"/>
+				<ref bean="appointment3"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Clinical Histories -->
+	
+	<bean id="clinicalHistory1" class="domain.ClinicalHistory">
+		<property name="creationDate" value="1990/07/01"/>
+		<property name="patient" ref="patient1"/>
+		<property name="medicalReports">
+			<list>
+				<ref bean="medicalReport1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="clinicalHistory2" class="domain.ClinicalHistory">
+		<property name="creationDate" value="1995/07/01"/>
+		<property name="patient" ref="patient2"/>
+		<property name="medicalReports">
+			<list>
+				<ref bean="medicalReport2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Labs -->
+	
+	<bean id="lab1" class="domain.Lab">
+		<property name="name" value="Quirón Lab"/>
+		<property name="address" value="Av. La palmera"/>
+		<property name="labTechnicians">
+			<list>
+				<ref bean="labTechnician1"/>
+			</list>
+		</property>
+		
+	</bean>
+	
+	<bean id="lab2" class="domain.Lab">
+		<property name="name" value="Vírgen del Rocío Lab"/>
+		<property name="address" value="Av. La palmera"/>
+		<property name="labTechnicians">
+			<list>
+				<ref bean="labTechnician2"/>
+			</list>
+		</property>
+		<property name="tests">
+			<list>
+				<ref bean="test1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Lab technicians -->
+	
+	<bean id="labTechnician1" class="domain.LabTechnician">
+		<property name="name" value="Andres"></property>
+		<property name="surname" value="Garrido"></property>
+		<property name="emailAddress" value="agarrido@healthappointment.com"></property>
+		<property name="userAccount" ref="userAccount6"/>
+		<property name="lab" ref="lab1"/>
+	</bean>
+	
+	<bean id="labTechnician2" class="domain.LabTechnician">
+		<property name="name" value="Javier"></property>
+		<property name="surname" value="Andrade"></property>
+		<property name="emailAddress" value="jandrade@healthappointment.com"></property>
+		<property name="userAccount" ref="userAccount7"/>
+		<property name="lab" ref="lab2"/>
+	</bean>
+	
+	<!-- Specialties -->
+	
+	<bean id="specialty1" class="domain.Specialty">
+		<property name="title" value="Pediatría"/>
+		<property name="description" value="Medico de niños."/>
+		<property name="doctors">
+			<list>
+				<ref bean="doctor1"/>
+				<ref bean="doctor2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="specialty2" class="domain.Specialty">
+		<property name="title" value="Oncología"/>
+		<property name="description" value="Especialidad médica que trata los tumores."/>
+		<property name="doctors">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="specialty3" class="domain.Specialty">
+		<property name="title" value="Traumatología"/>
+		<property name="description" value="Parte de la medicina que se dedica al estudio de las lesiones del aparato locomotor."/>
+		<property name="doctors">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Doctors -->
+	
+	<bean id="doctor1" class="domain.Doctor">
+		<property name="name" value="Juan"></property>
+		<property name="surname" value="Garrido"></property>
+		<property name="emailAddress" value="jgarrido@healthappointment.com"></property>
+		<property name="userAccount" ref="userAccount2"/>
+		<property name="specialty" ref="specialty1"/>
+		<property name="schedules">
+			<list>
+				<ref bean="schedule1"/>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="doctor2" class="domain.Doctor">
+		<property name="name" value="Antonio"></property>
+		<property name="surname" value="Bocanegra"></property>
+		<property name="emailAddress" value="abocanegra@healthappointment.com"></property>
+		<property name="userAccount" ref="userAccount3"/>
+		<property name="specialty" ref="specialty1"/>
+		<property name="schedules">
+			<list>
+				<ref bean="schedule2"/>
+				<ref bean="schedule3"/>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Clinics -->
+	
+	<bean id="clinic1" class="domain.Clinic">
+		<property name="name" value="Sagrado Coranzón"/>
+		<property name="address" value="Av. la Palmera"/>
+		<property name="phone" value="954869325"/>
+		<property name="email" value="info@SagradoCoranzón.com"/>
+		<property name="schedules">
+			<list>
+				<ref bean="schedule1"/>
+				<ref bean="schedule3"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="clinic2" class="domain.Clinic">
+		<property name="name" value="Vírgen de Rocío"/>
+		<property name="address" value="Av. la Palmera"/>
+		<property name="phone" value="954478523"/>
+		<property name="email" value="info@VirgenRocio.com"/>
+		<property name="schedules">
+			<list>
+				<ref bean="schedule2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Schedules -->
+	
+	<bean id="schedule1" class="domain.Schedule">
+		<property name="day" value="Monday"/>
+		<property name="startTime" value="2014/01/01 08:00"/>
+		<property name="endTime" value="2014/01/01 09:00"/>
+		<property name="doctor" ref="doctor1"/>
+		<property name="clinic" ref="clinic1"/>
+		<property name="appointments">
+			<list>
+				<ref bean="appointment2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="schedule2" class="domain.Schedule">
+		<property name="day" value="Monday"/>
+		<property name="startTime" value="2014/01/01 09:00"/>
+		<property name="endTime" value="2014/01/01 10:00"/>
+		<property name="doctor" ref="doctor2"/>
+		<property name="clinic" ref="clinic2"/>
+		<property name="appointments">
+			<list>
+				<ref bean="appointment1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="schedule3" class="domain.Schedule">
+		<property name="day" value="Monday"/>
+		<property name="startTime" value="2014/05/21 08:00"/>
+		<property name="endTime" value="2014/05/21 09:00"/>
+		<property name="doctor" ref="doctor2"/>
+		<property name="clinic" ref="clinic1"/>
+		<property name="appointments">
+			<list>
+				<ref bean="appointment3"/>
+				<ref bean="appointment4"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Appointments -->
+	
+	<bean id="appointment1" class="domain.Appointment">
+		<property name="startMoment" value="2014/05/19 08:45"/>
+		<property name="endMoment" value="2014/05/19 09:00"/>
+		<property name="schedule" ref="schedule2"/>
+		<property name="patient" ref="patient1"/>
+		<property name="medicalReport" ref="medicalReport1"/>
+	</bean>
+	
+	<bean id="appointment2" class="domain.Appointment">
+		<property name="startMoment" value="2014/05/19 08:30"/>
+		<property name="endMoment" value="2014/05/19 08:45"/>
+		<property name="schedule" ref="schedule1"/>
+		<property name="patient" ref="patient2"/>
+		<property name="medicalReport" ref="medicalReport2"/>
+	</bean>
+	
+	<bean id="appointment3" class="domain.Appointment">
+		<property name="startMoment" value="2014/05/26 08:30"/>
+		<property name="endMoment" value="2014/05/26 08:45"/>
+		<property name="schedule" ref="schedule3"/>
+		<property name="patient" ref="patient2"/>
+		<property name="medicalReport"><null/></property>
+	</bean>
+	
+	<bean id="appointment4" class="domain.Appointment">
+		<property name="startMoment" value="2014/05/26 08:45"/>
+		<property name="endMoment" value="2014/05/26 09:00"/>
+		<property name="schedule" ref="schedule3"/>
+		<property name="patient" ref="patient1"/>
+		<property name="medicalReport"><null/></property>
+	</bean>
+	
+	<!-- Medical Reports -->
+	
+	<bean id="medicalReport1" class="domain.MedicalReport">
+		<property name="creationDate" value="2014/01/01 08:35"/>
+		<property name="description" value="Tiene un leve dolor en la zona de las costillas"/>
+		<property name="appointment" ref="appointment1"/>
+		<property name="clinicalHistory" ref="clinicalHistory1"/>
+		<property name="tests">
+			<list>
+				<ref bean="test1"/>
+			</list>
+		</property>
+		<property name="prescriptions">
+			<list>
+				<ref bean="prescription1"/>
+				<ref bean="prescription2"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="medicalReport2" class="domain.MedicalReport">
+		<property name="creationDate" value="2014/01/01 08:35"/>
+		<property name="description" value="Tiene un leve dolor en la zona de las costillas"/>
+		<property name="appointment" ref="appointment2"/>
+		<property name="clinicalHistory" ref="clinicalHistory2"/>
+		<property name="tests">
+			<list>
+			</list>
+		</property>
+		<property name="prescriptions">
+			<list>
+				<ref bean="prescription3"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Tests -->
+	
+	<bean id="test1" class="domain.Test">
+		<property name="description" value="Pruebas de alergia"/>
+		<property name="moment" value="2014/02/01 08:35"></property>
+		<property name="lab" ref="lab1"/>
+		<property name="medicalReport" ref="medicalReport1"/>
+	</bean>
+	
+	<!-- Drugs -->
+	
+	<bean id="drug1" class="domain.Drug">
+		<property name="name" value="Ibuprofeno 2 mg"/>
+		<property name="dose" value="Una por la mañana y otra por la noche"/>
+		<property name="remark" value="Dejar de tomarla cuando note mejoría"/>
+	</bean>
+	
+	<bean id="drug2" class="domain.Drug">
+		<property name="name" value="Paracetamol 1 mg"/>
+		<property name="dose" value="Una al día"/>
+		<property name="remark" value="Tomar solamente si hay dolor fuerte"/>
+	</bean>
+	
+	<bean id="drug3" class="domain.Drug">
+		<property name="name" value="Antalgin 1 mg"/>
+		<property name="dose" value="Tres al día"/>
+		<property name="remark" value="Tratamiento para una semana"/>
+	</bean>
+	
+	<!-- Prescription -->
+	
+	<bean id="prescription1" class="domain.Prescription">
+		<property name="drug" ref="drug1"/>
+		<property name="medicalReport" ref="medicalReport1"/>
+	</bean>
+	
+
+	<bean id="prescription2" class="domain.Prescription">
+		<property name="drug" ref="drug2"/>
+		<property name="medicalReport" ref="medicalReport1"/>
+	</bean>
+	
+	<bean id="prescription3" class="domain.Prescription">
+		<property name="drug" ref="drug3"/>
+		<property name="medicalReport" ref="medicalReport2"/>
+	</bean>
+	
+	<!-- Comment -->
+	
+	<bean id="comment1" class="domain.Comment">
+		<property name="creationMoment" value="2014/02/01 20:35"/>
+		<property name="text" value="No ha sido muy correcto en las formas"/>
+		<property name="rating" value="5"/>
+		<property name="doctor" ref="doctor1"/>	
+	</bean>
+	
+</beans>

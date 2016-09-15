@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="clinic/list-available" extends="master.page">	
+		<put-attribute name="title" value="Registered clinics"/>
+		<put-attribute name="body" value="/views/clinic/list.jsp" />
+	</definition>
+	
+	<definition name="clinic/details" extends="master.page">	
+		<put-attribute name="title" value="Clinic's profile"/>
+		<put-attribute name="body" value="/views/clinic/display.jsp" />
+	</definition>
+	
+	<definition name="clinic/edit" extends="master.page">	
+		<put-attribute name="title" value="Edition of a clinic" />
+		<put-attribute name="body" value="/views/clinic/edit.jsp" />
+	</definition>
+
+</tiles-definitions>

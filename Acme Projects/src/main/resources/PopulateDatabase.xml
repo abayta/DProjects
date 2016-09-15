@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2014 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin1" />
+		<property name="password" value="e00cf25ad42683b3df678c61f42c6bda" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="user1" />
+		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="user2" />
+		<property name="password" value="7e58d63b60197ceb55a1c487989a3720" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="user3" />
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Administrators -->
+
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="Salvador"></property>
+		<property name="surname" value="Herrera López"></property>
+		<property name="userAccount" ref="userAccount1"></property>
+		<property name="emailAddress" value="salherlop@acmeprojects.com"></property>
+	</bean>
+
+	<bean id="administrator2" class="domain.Administrator">
+		<property name="name" value="Francisco"></property>
+		<property name="surname" value="Reina Ponce"></property>
+		<property name="userAccount" ref="userAccount2"></property>
+		<property name="emailAddress" value="frareiponp@acmeprojects.com"></property>
+	</bean>
+
+
+	<!-- Groups -->
+
+	<bean id="group1" class="domain.Group">
+		<property name="name" value="group's name 1"></property>
+		<property name="description" value="group's description 1."></property>
+		<property name="users">
+			<list>
+				<ref bean="user1" />
+			</list>
+		</property>
+		<property name="requirements">
+			<list>
+				<ref bean="requirement1" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="group2" class="domain.Group">
+		<property name="name" value="group's name 2"></property>
+		<property name="description" value="group's description 2."></property>
+		<property name="users">
+			<list>
+				<ref bean="user2" />
+				<ref bean="user3"/>
+			</list>
+		</property>
+		<property name="requirements">
+			<list>
+				<ref bean="requirement2" />
+				<ref bean="requirement3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="group3" class="domain.Group">
+		<property name="name" value="group's name 3"></property>
+		<property name="description" value="group's description 3."></property>
+		<property name="users">
+			<list>
+			</list>
+		</property>
+		<property name="requirements">
+			<list>
+			</list>
+		</property>	
+	</bean>
+
+
+	<!-- Users -->
+
+	<bean id="user1" class="domain.User">
+		<property name="name" value="Antonio"></property>
+		<property name="surname" value="Fernández García"></property>
+		<property name="emailAddress" value="afernandez@acmeprojects.com"></property>
+		<property name="userAccount" ref="userAccount3"></property>
+		<property name="group" ref="group1"></property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration1" />
+				<ref bean="registration3" />
+			</list>
+		</property>
+		<property name="createdProjects">
+			<list>
+				<ref bean="project1" />
+			</list>
+		</property>
+		<property name="followedProjects">
+			<list>
+				<ref bean="project2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="user2" class="domain.User">
+		<property name="name" value="Daniel"></property>
+		<property name="surname" value="López Segura"></property>
+		<property name="emailAddress" value="dlopez@acmeprojects.com"></property>
+		<property name="userAccount" ref="userAccount4"></property>
+		<property name="group" ref="group2"></property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration2" />
+				<ref bean="registration4" />
+			</list>
+		</property>
+		<property name="createdProjects">
+			<list>
+				<ref bean="project2" />
+				<ref bean="project3" />
+			</list>
+		</property>
+		<property name="followedProjects">
+			<list>
+				<ref bean="project1" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="user3" class="domain.User">
+		<property name="name" value="Antonio"></property>
+		<property name="surname" value="Gerena Román"></property>
+		<property name="emailAddress" value="dgerena@acmeprojects.com"></property>
+		<property name="userAccount" ref="userAccount5"></property>
+		<property name="group" ref="group2"></property>
+		<property name="registrations">
+			<list>
+			</list>
+		</property>
+		<property name="createdProjects">
+			<list>
+			</list>
+		</property>
+		<property name="followedProjects">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<!--  Projects -->
+	
+	<bean id="project1" class="domain.Project">
+		<property name="referenceNumber" value="aaa1111"></property>
+		<property name="title" value="Project's title 1"></property>
+		<property name="goal" value="Project's goal 1"></property>
+		<property name="description" value="Project's description 1"></property>
+		<property name="creationMoment" value="2013/12/12 10:00"></property>
+		<property name="startMoment" value="2014/01/01 00:00"></property>
+		<property name="endMoment" value="2014/05/06 00:00"></property>
+		<property name="creator" ref="user1"></property>
+		<property name="state" value="Started"></property>
+		<property name="totalWork" value="7.75"></property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration1" />
+			</list>
+		</property>
+		<property name="requirements">
+			<list>
+				<ref bean="requirement1" />
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+				<ref bean="user2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="project2" class="domain.Project">
+		<property name="referenceNumber" value="bbb222"></property>
+		<property name="title" value="Project's title 2"></property>
+		<property name="goal" value="Project's goal 2"></property>
+		<property name="description" value="Project's description 2"></property>
+		<property name="creationMoment" value="2013/12/12 10:00"></property>
+		<property name="startMoment" value="2014/05/05 00:00"></property>
+		<property name="endMoment" value="2014/11/06 00:00"></property>
+		<property name="creator" ref="user2"></property>
+		<property name="state" value="Recruiting"></property>
+		<property name="totalWork" value="0"></property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration2" />
+			</list>
+		</property>
+		<property name="requirements">
+			<list>
+				<ref bean="requirement2" />
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+				<ref bean="user1" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="project3" class="domain.Project">
+		<property name="referenceNumber" value="ccc333"></property>
+		<property name="title" value="Project's title 3"></property>
+		<property name="goal" value="Project's goal 3"></property>
+		<property name="description" value="Project's description 3"></property>
+		<property name="creationMoment" value="2013/12/12 10:00"></property>
+		<property name="startMoment" value="2014/02/10 00:00"></property>
+		<property name="endMoment" value="2014/02/12 00:00"></property>
+		<property name="creator" ref="user2"></property>
+		<property name="state" value="Finished"></property>
+		<property name="totalWork" value="10"></property>
+		<property name="registrations">
+			<list>
+				<ref bean="registration3" />
+				<ref bean="registration4" />
+			</list>
+		</property>
+		<property name="requirements">
+			<list>
+				<ref bean="requirement3" />
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="project4" class="domain.Project">
+		<property name="referenceNumber" value="bbb224552"></property>
+		<property name="title" value="Project's title 4"></property>
+		<property name="goal" value="Project's goal 4"></property>
+		<property name="description" value="Project's description 4"></property>
+		<property name="creationMoment" value="2014/01/01 10:00"></property>
+		<property name="startMoment" value="2014/05/05 00:00"></property>
+		<property name="endMoment" value="2014/11/06 00:00"></property>
+		<property name="creator" ref="user2"></property>
+		<property name="state" value="Recruiting"></property>
+		<property name="totalWork" value="0"></property>
+		<property name="registrations">
+			<list>
+			</list>
+		</property>
+		<property name="requirements">
+			<list>
+			</list>
+		</property>
+		<property name="followers">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Requirements -->
+
+	<bean id="requirement1" class="domain.Requirement">
+		<property name="peopleNumber" value="5"></property>
+		<property name="freePlaces" value="2"></property>
+		<property name="group" ref="group1"></property>
+		<property name="project" ref="project1"></property>
+	</bean>
+
+	<bean id="requirement2" class="domain.Requirement">
+		<property name="peopleNumber" value="8"></property>
+		<property name="freePlaces" value="5"></property>
+		<property name="group" ref="group2"></property>
+		<property name="project" ref="project2"></property>
+	</bean>
+
+	<bean id="requirement3" class="domain.Requirement">
+		<property name="peopleNumber" value="2"></property>
+		<property name="freePlaces" value="2"></property>
+		<property name="group" ref="group2"></property>
+		<property name="project" ref="project3"></property>
+	</bean>
+	
+
+	<!-- Registrations -->
+
+	<bean id="registration1" class="domain.Registration">
+		<property name="date" value="2014/01/01 10:00"></property>
+		<property name="totalWork" value="7.75"></property>
+		<property name="user" ref="user1"></property>
+		<property name="project" ref="project1"></property>
+		<property name="statusUpdates">
+			<list>
+				<ref bean="statusUpdate1" />
+				<ref bean="statusUpdate2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="registration2" class="domain.Registration">
+		<property name="date" value="2014/02/02 12:00"></property>
+		<property name="totalWork" value="0"></property>
+		<property name="user" ref="user2"></property>
+		<property name="project" ref="project2"></property>
+		<property name="statusUpdates">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="registration3" class="domain.Registration">
+		<property name="date" value="2014/02/11 10:00"></property>
+		<property name="totalWork" value="5"></property>
+		<property name="user" ref="user1"></property>
+		<property name="project" ref="project3"></property>
+		<property name="statusUpdates">
+			<list>
+				<ref bean="statusUpdate3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="registration4" class="domain.Registration">
+		<property name="date" value="2014/02/11 12:00"></property>
+		<property name="totalWork" value="5"></property>
+		<property name="user" ref="user2"></property>
+		<property name="project" ref="project3"></property>
+		<property name="statusUpdates">
+			<list>
+				<ref bean="statusUpdate4" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Status Updates -->
+
+	<bean id="statusUpdate1" class="domain.StatusUpdate">
+		<property name="description" value="Status Project's description 1."></property>
+		<property name="moment" value="2014/01/02 10:00"></property>
+		<property name="workAmount" value="2.25"></property>
+		<property name="registration" ref="registration1"></property>
+	</bean>
+
+	<bean id="statusUpdate2" class="domain.StatusUpdate">
+		<property name="description" value="Status Project's description 2."></property>
+		<property name="moment" value="2014/02/04 12:00"></property>
+		<property name="workAmount" value="5.50"></property>
+		<property name="registration" ref="registration1"></property>
+	</bean>
+	
+	<bean id="statusUpdate3" class="domain.StatusUpdate">
+		<property name="description" value="Status Project's description 3."></property>
+		<property name="moment" value="2014/01/02 10:00"></property>
+		<property name="workAmount" value="5"></property>
+		<property name="registration" ref="registration3"></property>
+	</bean>
+
+	<bean id="statusUpdate4" class="domain.StatusUpdate">
+		<property name="description" value="Status Project's description 4."></property>
+		<property name="moment" value="2014/02/04 12:00"></property>
+		<property name="workAmount" value="5"></property>
+		<property name="registration" ref="registration4"></property>
+	</bean>
+
+</beans>

@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2014 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin1" />
+		<property name="password" value="e00cf25ad42683b3df678c61f42c6bda" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="customer1" />
+		<property name="password" value="ffbc4675f864e0e9aab8bdf7a0437010" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="customer2" />
+		<property name="password" value="5ce4d191fd14ac85a1469fb8c29b7a7b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="customer3" />
+		<property name="password" value="033f7f6121501ae98285ad77f216d5e7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Administrators -->
+
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="Salvador"></property>
+		<property name="surname" value="Herrera López"></property>
+		<property name="userAccount" ref="userAccount1"></property>
+		<property name="emailAddress" value="salherlop@acmegallery.com"></property>
+	</bean>
+
+	<bean id="administrator2" class="domain.Administrator">
+		<property name="name" value="Francisco"></property>
+		<property name="surname" value="Reina Ponce"></property>
+		<property name="userAccount" ref="userAccount2"></property>
+		<property name="emailAddress" value="frareiponp@acmegallery.com"></property>
+	</bean>
+
+
+	<!-- CreditCards -->
+
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="Antonio Fernández García" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4532 1114 5467 6994" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="2015" />
+		<property name="cvv" value="678" />
+	</bean>
+
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holderName" value="Daniel López Segura" />
+		<property name="brandName" value="MasterCard" />
+		<property name="number" value="5159 6819 1639 9202" />
+		<property name="expirationMonth" value="01" />
+		<property name="expirationYear" value="2016" />
+		<property name="cvv" value="368" />
+	</bean>
+
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holderName" value="Jesús García Ruíz" />
+		<property name="brandName" value="MasterCard" />
+		<property name="number" value="5491 2302 4746 0874" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="2018" />
+		<property name="cvv" value="354" />
+	</bean>
+
+
+	<!-- Customers -->
+
+	<bean id="customer1" class="domain.Customer">
+		<property name="name" value="Antonio"></property>
+		<property name="surname" value="Fernández García"></property>
+		<property name="emailAddress" value="afernandez@acmegallery.com"></property>
+		<property name="creditCard" ref="creditCard1"></property>
+		<property name="userAccount" ref="userAccount3"></property>
+		<property name="galleries">
+			<list>
+				<ref bean="gallery1" />
+			</list>
+		</property>
+		<property name="ownerships">
+			<list>
+				<ref bean="ownership1" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment1" />
+				<ref bean="comment3" />
+			</list>
+		</property>
+		<property name="auctions">
+			<list>
+				<ref bean="auction1" />
+			</list>
+		</property>
+		<property name="bids">
+			<list>
+				<ref bean="bid3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customer2" class="domain.Customer">
+		<property name="name" value="Daniel"></property>
+		<property name="surname" value="López Segura"></property>
+		<property name="emailAddress" value="dlopez@acmegallery.com"></property>
+		<property name="creditCard" ref="creditCard2"></property>
+		<property name="userAccount" ref="userAccount4"></property>
+		<property name="galleries">
+			<list>
+				<ref bean="gallery2" />
+			</list>
+		</property>
+		<property name="ownerships">
+			<list>
+				<ref bean="ownership2" />
+				<ref bean="ownership3" />
+				<ref bean="ownership4" />
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment2" />
+			</list>
+		</property>
+		<property name="auctions">
+			<list>
+				<ref bean="auction2" />
+				<ref bean="auction3" />
+			</list>
+		</property>
+		<property name="bids">
+			<list>
+				<ref bean="bid1" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customer3" class="domain.Customer">
+		<property name="name" value="Antonio"></property>
+		<property name="surname" value="Gerena Román"></property>
+		<property name="emailAddress" value="agerena@acmegallery.com"></property>
+		<property name="creditCard" ref="creditCard3"></property>
+		<property name="userAccount" ref="userAccount5"></property>
+		<property name="galleries">
+			<list>
+			</list>
+		</property>
+		<property name="ownerships">
+			<list>
+			</list>
+		</property>
+		<property name="auctions">
+			<list>
+			</list>
+		</property>
+		<property name="bids">
+			<list>
+				<ref bean="bid2" />
+				<ref bean="bid4" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Galleries -->
+
+	<bean id="gallery1" class="domain.Gallery">
+		<property name="title" value="Gallery 1"></property>
+		<property name="customer" ref="customer1" />
+		<property name="paintings">
+			<list>
+				<ref bean="painting1" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="gallery2" class="domain.Gallery">
+		<property name="title" value="Gallery 2"></property>
+		<property name="customer" ref="customer2" />
+		<property name="paintings">
+			<list>
+				<ref bean="painting2" />
+				<ref bean="painting3" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Paintings -->
+
+	<bean id="painting1" class="domain.Painting">
+		<property name="title" value="Title 1"></property>
+		<property name="author" value="Author 1"></property>
+		<property name="date" value="2008/01/01"></property>
+		<property name="appraisal" value="45000.00"></property>
+		<property name="ownerships">
+			<list>
+				<ref bean="ownership1" />
+			</list>
+		</property>
+		<property name="auctions">
+			<list>
+				<ref bean="auction1" />
+			</list>
+		</property>
+		<property name="gallery" ref="gallery1"></property>
+		<property name="comments">
+			<list>
+				<ref bean="comment1" />
+				<ref bean="comment2" />
+				<ref bean="comment3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="painting2" class="domain.Painting">
+		<property name="title" value="Title 2"></property>
+		<property name="author" value="Author 2"></property>
+		<property name="date" value="2010/01/01"></property>
+		<property name="appraisal" value="22500.00"></property>
+		<property name="ownerships">
+			<list>
+				<ref bean="ownership2" />
+			</list>
+		</property>
+		<property name="auctions">
+			<list>
+				<ref bean="auction2" />
+			</list>
+		</property>
+		<property name="gallery" ref="gallery2"></property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="painting3" class="domain.Painting">
+		<property name="title" value="Title 3"></property>
+		<property name="author" value="Author 3"></property>
+		<property name="date" value="2011/01/01"></property>
+		<property name="appraisal" value="22300.00"></property>
+		<property name="ownerships">
+			<list>
+				<ref bean="ownership3" />
+			</list>
+		</property>
+		<property name="auctions">
+			<list>
+				<ref bean="auction3" />
+			</list>
+		</property>
+		<property name="gallery" ref="gallery2"></property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="painting4" class="domain.Painting">
+		<property name="title" value="Title 4"></property>
+		<property name="author" value="Author 4"></property>
+		<property name="date" value="2012/01/01"></property>
+		<property name="appraisal" value="5000.00"></property>
+		<property name="ownerships">
+			<list>
+				<ref bean="ownership4" />
+			</list>
+		</property>
+		<property name="auctions">
+			<list>
+			</list>
+		</property>
+		<property name="gallery"> <null/> </property>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Auctions -->
+
+	<bean id="auction1" class="domain.Auction">
+		<property name="startPeriod" value="2012/01/01 00:00"></property>
+		<property name="endPeriod" value="2012/05/06 00:00"></property>
+		<property name="creator" ref="customer1"></property>
+		<property name="winner"> <null/> </property>
+		<property name="bids">
+			<list>
+				<ref bean="bid1" />
+				<ref bean="bid2" />
+			</list>
+		</property>
+		<property name="painting" ref="painting1"></property>
+	</bean>
+
+	<bean id="auction2" class="domain.Auction">
+		<property name="startPeriod" value="2013/02/01 00:00"></property>
+		<property name="endPeriod" value="2013/06/06 00:00"></property>
+		<property name="creator" ref="customer2"></property>
+		<property name="winner"> <null/> </property>
+		<property name="bids">
+			<list>
+				<ref bean="bid3" />
+				<ref bean="bid4" />
+			</list>
+		</property>
+		<property name="painting" ref="painting2"></property>
+	</bean>
+	
+	<bean id="auction3" class="domain.Auction">
+		<property name="startPeriod" value="2013/02/01 00:00"></property>
+		<property name="endPeriod" value="2015/06/06 00:00"></property>
+		<property name="creator" ref="customer2"></property>
+		<property name="winner"> <null/> </property>
+		<property name="startingPrice" value="36252.35"></property>
+		<property name="bids">
+			<list>
+			</list>
+		</property>
+		<property name="painting" ref="painting3"></property>
+	</bean>
+
+
+	<!-- Bids -->
+
+	<bean id="bid1" class="domain.Bid">
+		<property name="creationMoment" value="2012/03/01 10:00"></property>
+		<property name="moneyAmount" value="49000.95"></property>
+		<property name="customer" ref="customer2"></property>
+		<property name="auction" ref="auction1"></property>
+	</bean>
+
+	<bean id="bid2" class="domain.Bid">
+		<property name="creationMoment" value="2012/04/01 12:00"></property>
+		<property name="moneyAmount" value="32500.00"></property>
+		<property name="customer" ref="customer3"></property>
+		<property name="auction" ref="auction1"></property>
+	</bean>
+
+	<bean id="bid3" class="domain.Bid">
+		<property name="creationMoment" value="2013/04/15 15:55"></property>
+		<property name="moneyAmount" value="9000.95"></property>
+		<property name="customer" ref="customer1"></property>
+		<property name="auction" ref="auction2"></property>
+	</bean>
+
+	<bean id="bid4" class="domain.Bid">
+		<property name="creationMoment" value="2013/05/20 17:45"></property>
+		<property name="moneyAmount" value="10500.50"></property>
+		<property name="customer" ref="customer3"></property>
+		<property name="auction" ref="auction2"></property>
+	</bean>
+
+
+	<!-- Ownerships -->
+
+	<bean id="ownership1" class="domain.Ownership">
+		<property name="startMoment" value="2011/01/01 09:00"></property>
+		<property name="endMoment">
+			<null />
+		</property>
+		<property name="legalOwner" ref="customer1"></property>
+		<property name="painting" ref="painting1"></property>
+	</bean>
+
+	<bean id="ownership2" class="domain.Ownership">
+		<property name="startMoment" value="2012/11/01 09:30"></property>
+		<property name="endMoment">
+			<null />
+		</property>
+		<property name="legalOwner" ref="customer2"></property>
+		<property name="painting" ref="painting2"></property>
+	</bean>
+	
+	<bean id="ownership3" class="domain.Ownership">
+		<property name="startMoment" value="2013/01/01 00:00"></property>
+		<property name="endMoment">
+			<null />
+		</property>
+		<property name="legalOwner" ref="customer2"></property>
+		<property name="painting" ref="painting3"></property>
+	</bean>
+
+	<bean id="ownership4" class="domain.Ownership">
+		<property name="startMoment" value="2013/10/10 09:00"></property>
+		<property name="endMoment">
+			<null />
+		</property>
+		<property name="legalOwner" ref="customer2"></property>
+		<property name="painting" ref="painting4"></property>
+	</bean>
+
+
+	<!-- Comments -->
+
+	<bean id="comment1" class="domain.Comment">
+		<property name="creationMoment" value="2012/01/02 16:00"></property>
+		<property name="text" value="Comment 1..."></property>
+		<property name="parent">
+			<null />
+		</property>
+		<property name="customer" ref="customer1"></property>
+		<property name="painting" ref="painting1"></property>
+		<property name="children">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="comment2" class="domain.Comment">
+		<property name="creationMoment" value="2012/02/01 18:10"></property>
+		<property name="text" value="Comment 2..."></property>
+		<property name="parent">
+			<null />
+		</property>
+		<property name="customer" ref="customer2"></property>
+		<property name="painting" ref="painting1"></property>
+		<property name="children">
+			<list>
+				<ref bean="comment3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="comment3" class="domain.Comment">
+		<property name="creationMoment" value="2012/02/02 09:15"></property>
+		<property name="text" value="Comment 3..."></property>
+		<property name="parent" ref="comment2"></property>
+		<property name="customer" ref="customer1"></property>
+		<property name="painting" ref="painting1"></property>
+		<property name="children">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+</beans>

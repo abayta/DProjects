@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * converters.xml
+ *
+ * Copyright (C) 2014 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd		
+	">
+
+	<util:list id="converters">
+		
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.StringToActorConverter" />
+		
+		<bean class="converters.AdministratorToStringConverter" />
+		<bean class="converters.StringToAdministratorConverter" />
+		
+		<bean class="converters.AppointmentToStringConverter" />
+		<bean class="converters.StringToAppointmentConverter" />
+		
+		<bean class="converters.AuthorityToStringConverter" />
+		<bean class="converters.StringToAuthorityConverter" />
+		
+		<bean class="converters.ScheduleToStringConverter" />
+		<bean class="converters.StringToScheduleConverter" />
+		
+		<bean class="converters.ClinicalHistoryToStringConverter" />
+		<bean class="converters.StringToClinicalHistoryConverter" />
+		
+		<bean class="converters.ClinicToStringConverter" />
+		<bean class="converters.StringToClinicConverter" />
+		
+		<bean class="converters.CommentToStringConverter" />
+		<bean class="converters.StringToCommentConverter" />
+	
+		<bean class="converters.DoctorToStringConverter" />
+		<bean class="converters.StringToDoctorConverter" />
+		
+		<bean class="converters.LabToStringConverter" />
+		<bean class="converters.StringToLabConverter" />
+		
+		<bean class="converters.LabTechnicianToStringConverter" />
+		<bean class="converters.StringToLabTechnicianConverter" />
+		
+		<bean class="converters.MedicalReportToStringConverter" />
+		<bean class="converters.StringToMedicalReportConverter" />
+		
+		<bean class="converters.PatientToStringConverter" />
+		<bean class="converters.StringToPatientConverter" />
+		
+		<bean class="converters.PrescriptionToStringConverter" />
+		<bean class="converters.StringToPrescriptionConverter" />
+		
+		<bean class="converters.SpecialtyToStringConverter" />
+		<bean class="converters.StringToSpecialtyConverter" />
+		
+		<bean class="converters.TestToStringConverter" />
+		<bean class="converters.StringToTestConverter" />
+		
+		<bean class="converters.UserAccountToStringConverter" />
+		<bean class="converters.StringToUserAccountConverter" />
+
+	</util:list>
+	
+</beans>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="appointment/list-available-today" extends="master.page">	
+		<put-attribute name="title" value="Available appointments of the day"/>
+		<put-attribute name="body" value="/views/appointment/list.jsp" />
+	</definition>
+
+	<definition name="appointment/list-available" extends="master.page">	
+		<put-attribute name="title" value="Available appointments"/>
+		<put-attribute name="body" value="/views/appointment/list.jsp" />
+	</definition>
+	
+	<definition name="appointment/list-not-available" extends="master.page">	
+		<put-attribute name="title" value="Completed appointments"/>
+		<put-attribute name="body" value="/views/appointment/list.jsp" />
+	</definition>
+	
+	<definition name="appointment/create" extends="master.page">	
+		<put-attribute name="title" value="Available appointments"/>
+		<put-attribute name="body" value="/views/appointment/edit.jsp" />
+	</definition>
+
+</tiles-definitions>

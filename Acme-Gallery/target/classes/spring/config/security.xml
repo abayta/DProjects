@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    ">
+
+	<!-- Security infrastructure -->
+
+	<bean id="loginService" class="security.LoginService" />
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- Access control -->
+
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/" access="permitAll" /> 
+
+		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
+		<security:intercept-url pattern="/images/**" access="permitAll" /> 
+		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
+		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/privacy/lopd-lssi.do" access="permitAll" />
+		<security:intercept-url pattern="/privacy/cookies.do" access="permitAll" />
+		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
+		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
+	
+		<security:intercept-url pattern="/security/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/customer/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/gallery/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/painting/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/auction/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/ownership/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/dashboard/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/comment/administrator/**" access="hasRole('ADMIN')" />
+		
+		<security:intercept-url pattern="/gallery/customer/**" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/painting/customer/**" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/comment/customer/**" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/customer/customer/**" access="hasRole('CUSTOMER')" />
+		
+		<security:intercept-url pattern="/security/customer/**" access="isAnonymous()" />
+		<security:intercept-url pattern="/customer/**" access="isAnonymous()" />
+		<security:intercept-url pattern="/gallery/**" access="isAnonymous()" />
+		<security:intercept-url pattern="/painting/**" access="isAnonymous()" />
+		<security:intercept-url pattern="/auction/list-active.do" access="isAnonymous()" />
+		<security:intercept-url pattern="/auction/details.do" access="isAnonymous()" />
+		
+		<security:intercept-url pattern="/auction/customer/**" access="hasRole('CUSTOMER')"/>
+		<security:intercept-url pattern="/bid/customer/**" access="hasRole('CUSTOMER')"/>
+		
+		<security:intercept-url pattern="/painting/details.do" access="permitAll" />
+		<security:intercept-url pattern="/comment/details.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+
+		<security:form-login 
+			login-page="/security/login.do"
+			password-parameter="password" 
+			username-parameter="username"
+			authentication-failure-url="/security/loginFailure.do" />
+
+		<security:logout 
+			logout-success-url="/" 
+			invalidate-session="true" />
+	</security:http>
+
+</beans>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+
+	<definition name="project/list" extends="master.page">	
+		<put-attribute name="title" value="Lista de proyectos" />
+		<put-attribute name="body" value="/views/project/list.jsp" />
+	</definition>
+
+	<definition name="project/list/my-created" extends="master.page">	
+		<put-attribute name="title" value="Proyectos que he creado" />
+		<put-attribute name="body" value="/views/project/list.jsp" />
+	</definition>
+	
+	<definition name="project/list/vacancy" extends="master.page">	
+		<put-attribute name="title" value="Proyectos en los que hay vacantes" />
+		<put-attribute name="body" value="/views/project/list.jsp" />
+	</definition>
+		
+	<definition name="project/list/my-joined" extends="master.page">	
+		<put-attribute name="title" value="Proyectos en los que estoy registrado" />
+		<put-attribute name="body" value="/views/project/list.jsp" />
+	</definition>
+	
+	<definition name="project/list/my-followed" extends="master.page">	
+		<put-attribute name="title" value="Proyectos que estoy siguiendo" />
+		<put-attribute name="body" value="/views/project/list.jsp" />
+	</definition>
+	
+	<definition name="project/display" extends="master.page">	
+		<put-attribute name="title" value="Detalles de proyecto" />
+		<put-attribute name="body" value="/views/project/display.jsp" />
+	</definition>
+	
+	<definition name="project/create" extends="master.page">	
+		<put-attribute name="title" value="Crear proyecto" />
+		<put-attribute name="body" value="/views/project/edit.jsp" />
+	</definition>
+	
+</tiles-definitions>
